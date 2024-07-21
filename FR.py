@@ -1,20 +1,18 @@
 import cv2  
 import numpy as np 
 import dlib 
-  
-  
-# Connects to your computer's default camera 
-cap = cv2.VideoCapture(0) 
+# from google.colab.patches import cv2_imshow 
+
+# Connects computer's default camera 
+cap = cv2.VideoCapture(0) # or link of video
 
 # Check if camera opened successfully
 if not cap.isOpened():
     print("Error opening video stream or file")
-    exit() # Exit if camera cannot be opened
-  
-  
+    exit() # Exit if camera cannot be opened 
+
 # Detect the coordinates 
-detector = dlib.get_frontal_face_detector() 
-  
+detector = dlib.get_frontal_face_detector()
   
 # Capture frames continuously 
 while True: 
@@ -50,14 +48,12 @@ while True:
                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2) 
         print(face, i) 
   
-    # Display the resulting frame 
-    cv2.imshow('frame', frame) 
+    # Display the frame 
+    cv2.imshow(frame) # cv2_imshow for google collab
   
-    # This command let's us quit with the "q" button on a keyboard. 
+    # quit with the "q" button on a keyboard. 
     if cv2.waitKey(1) & 0xFF == ord('q'): 
         break
   
-  
-# Release the capture and destroy the windows 
 cap.release() 
 cv2.destroyAllWindows()
